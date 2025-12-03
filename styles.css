@@ -63,9 +63,148 @@ table {
 }
 
 /* GLOBAL STYLES (MOBILE FIRST (SMALL) */
+h1 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+header {
+    background-color: var(--black);
+    font-family: "Inter", serif;
+    color: var(--white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 0 20px  var(--blue);
+}
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+header ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-content: right;
+    overflow: hidden;
+    text-align: center;
+    max-height: 0; 
+    transition: max-height 0.3s ease-in-out;
+    background-color: var(--black);
+}
+header h2 {
+    visibility: hidden;
+    height: 1px;
+    position: absolute;
+    width: 1px;
+}
+header li a {
+    display: block;
+    font-size: 1rem;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--blue);
+    transition: color .3s ease-in;
+}
+header li a:hover {
+    color: var(--white);
+}
+header label {
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
+    padding: 0.5rem;
+    user-select: none;
+}
 
-
-/* MIN-WIDTH OF THE PAGE SHOULD NOT GO BELOW 400PX */
+label span {
+    background-color: var(--blue);
+    display: block;
+    height: 0.2rem;
+    position: relative;
+    transition: background-color .3s ease-out;
+    width: 1.5rem;
+}
+label span:before, label span:after {
+    background: var(--blue);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+label span:before { top: 0.5rem; }
+label span:after { top: -0.5rem; }
+input[type="checkbox"] {
+    display: none;
+}
+input:checked ~ ul {
+    max-height: 500px;
+}
+input:checked ~ label span {
+    background: transparent;
+}
+input:checked ~ label span:before {
+    transform: rotate(-45deg);
+    top: 0;
+}
+input:checked ~ label span:after {
+    transform: rotate(45deg);
+    top: 0;
+}
+.btn {
+    display: inline-block;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.btn:hover {
+    background-color: var(--dark-blue);
+}
+.btn-full {
+    width: 100%;
+    text-align: center;
+}
+body {
+    font-family: "Inter", serif;
+}
 
 /* ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
 .container {
@@ -73,17 +212,37 @@ table {
     max-width: 1200px;
     margin: 0 auto;
 }
+.section-padding {
+    padding: 1rem 0;
+}
 
 /* ADD TO "INNOVATION & INVESTMENT SECTION (Photo by Kevin Matos on Unsplash) */
  #innovation {
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
     height: 80vh;
+    min-height: 400px;
     display: grid;
     place-items: center;
     text-align: center;
     padding: 1rem;
     overflow: hidden;
+    
 }
+.hero-content {
+    backdrop-filter: blur(6px);
+}
+.hero-content h2 {
+    font-size: 2.5rem;
+    color: var(--white);
+}
+.hero-content p {
+    font-size: 1.1rem;
+    color: var(--white);
+    max-width: 600px;
+    margin: 1rem auto 2rem auto;
+    /* background: bl; */
+}
+
 
 /* ADD FLOATING SVG LOGO BEFORE THE H1 */
  #logo {
@@ -95,6 +254,58 @@ table {
     background: url('images/vanguard-logo.svg') no-repeat center/contain;
 
 }
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.card {
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+.card h3 {
+    padding-bottom: 0.5rem;
+}
+
+#results-section {
+    background-color: var(--blue);
+    color: var(--white);
+}
+.results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.results-table th, .results-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--charcoal);
+}
+.results-table th {
+    background-color: #1a1a1a;
+    font-weight: bold;
+    color: var(--blue);
+}
+.results-table tr:nth-child(odd) {
+    background-color: var(--black);
+  }
+  .results-table tr:nth-child(even) {
+    background-color: var(--charcoal); 
+  }
+
 /* THIS ONE IS DONE FOR YOU */
 #bar-chart {
     display: grid;
@@ -141,39 +352,102 @@ table {
     animation: stepUp 1s ease-in-out forwards;
 }
 
-@media screen and (min-width: 600px){
-    nav ul {
-      overflow:visible;
-      position:absolute;
-      top: 1.5rem;
-      left:.5rem;
-      display: grid;
-      grid-template-columns:1fr 1fr 1fr;
+#contact {
+    background-color: var(--black);
+    color: var(--white);
+    padding-bottom: 4rem;
+}
+form {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    display: grid;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+input, textarea {
+    padding: 0.75rem;
+    border: 0.15rem solid var(--blue);
+    font-family: "Inter";
+}
+
+footer {
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.8rem;
+}
+footer a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+
+@media screen and (min-width: 800px) {
+    header label, header input {
+        display: none;
     }
-    nav li a {
-      display:inline-block;
-  }
-    label span, input {
-      display:none;
+    header ul {
+        max-height: none;
+        overflow: visible;
+        background: transparent;
+        display: flex;
+        justify-content: right;
+        width: auto;
+        gap: 1rem;
     }
-  }
-
-
-/* MEDIA QUERIES (MEDIUM) */ 
-
-    #results {
+    header li a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    .services-grid {
         grid-template-columns: 1fr 1fr;
     }
     .results-container {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
     }
-    .results-table {
-        width: 50%;
+    .table-container {
+        width: 48%;
     }
-    .bar-chart {
-        width: 50%;
+    .chart-container {
+        width: 48%;
     }
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px; 
+        width: 90%;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
+/* =========================== */
+/* 3. LARGE BREAKPOINT (MIN-WIDTH: 1024px) */
+/* =========================== */
+@media screen and (min-width: 1024px) {
+    
 
-/* MEDIA QUERIES (LARGE) */
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .hero-content h2 {
+        font-size: 3.5rem;
+    }
+}
